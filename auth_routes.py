@@ -38,7 +38,7 @@ async def autenticar():
 async def cria_conta(usuario_schema: UsuarioSchema, session: Session = Depends(pegar_sessao)):
     usuario = session.query(Usuario).filter(Usuario.email==usuario_schema.email).first()
     if usuario:
-        raise HTTPException(status_code=400, detail="Email do usuário já cadastardo")
+        raise HTTPException(status_code=400, detail="Email do usuário já cadastrado")
     else:
         senha_criptografada = bcrypt_context.hash(usuario_schema.senha)
         novo_usuario = Usuario(usuario_schema.nome, usuario_schema.email, senha_criptografada, usuario_schema.admin)

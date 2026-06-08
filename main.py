@@ -16,9 +16,9 @@ bcrypt_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_schema = OAuth2PasswordBearer(tokenUrl="auth/login-form")
 
 from auth_routes import auth_router
-from order_routes import order_router
+from jogo_routes import jogo_router
 
 website.include_router(auth_router)
-website.include_router(order_router)
+website.include_router(jogo_router)
 
 # uvicorn main:website --reload
