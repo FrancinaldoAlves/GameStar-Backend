@@ -17,8 +17,10 @@ oauth2_schema = OAuth2PasswordBearer(tokenUrl="auth/login-form")
 
 from auth_routes import auth_router
 from jogo_routes import jogo_router
+from noticia_routes import noticia_router
 
 website.include_router(auth_router)
 website.include_router(jogo_router)
+website.include_router(noticia_router)
 
 # uvicorn main:website --reload
