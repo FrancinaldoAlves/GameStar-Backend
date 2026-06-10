@@ -19,10 +19,14 @@ from auth_routes import auth_router
 from jogo_routes import jogo_router
 from noticia_routes import noticia_router
 from review_routes import review_router
+from favorito_routes import favorito_router
+
 
 website.include_router(auth_router)
 website.include_router(jogo_router)
 website.include_router(noticia_router)
 website.include_router(review_router)
+website.include_router(favorito_router)
+
 
 # uvicorn main:website --reload

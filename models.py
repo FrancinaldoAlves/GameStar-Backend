@@ -51,7 +51,7 @@ class Noticia(Base):
 
 class Review(Base):
 
-    __tablename__ = "review"
+    __tablename__ = "reviews"
 
     id = Column("id", Integer, primary_key=True, autoincrement=True)
     usuario_id = Column(Integer, ForeignKey("usuarios.id"))
@@ -71,6 +71,17 @@ class Review(Base):
         self.finalizado = finalizado
         self.dropado = dropado
 
+class Favorito(Base):
+
+    __tablename__ = "favoritos"
+
+    id = Column("id", Integer, primary_key=True, autoincrement=True)
+    usuario_id = Column(Integer, ForeignKey("usuarios.id"))
+    jogo_id = Column(Integer, ForeignKey("jogos.id"))
+
+    def __init__(self, usuario_id, jogo_id):
+        self.usuario_id = usuario_id
+        self.jogo_id = jogo_id
 
 Base.metadata.create_all(db)
 # python models.py executar no terminal para aparecer o arquivo no vs code
