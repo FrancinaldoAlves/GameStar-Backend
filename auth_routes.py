@@ -79,3 +79,12 @@ async def gerar_refresh_token(usuario: Usuario = Depends(verificar_token)):
             "access_token": access_token,
             "token_type": "Bearer"
         }
+
+@auth_router.get("/pegar_usuario")
+async def pega_usuario(usuario: Usuario = Depends(verificar_token)):
+    return {
+        "id": usuario.id,
+        "nome": usuario.nome,
+        "email": usuario.email,
+        "admin": usuario.admin
+    }
