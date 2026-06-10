@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
-from schemas import JogoSchema
+from schemas import JogoSchema, FavoritoSchema
 from sqlalchemy.orm import Session
-from models import Usuario, Jogo
+from models import Usuario, Jogo, Favorito
 from dependencies import pegar_sessao, verificar_token
 
 
@@ -44,4 +44,3 @@ async def pesquisar_jogos(titulo: str = None, session: Session = Depends(pegar_s
     if jogo:
         return jogo
     return {"mensagem": "Nenhum jogo encontrado"}
-    
