@@ -34,3 +34,14 @@ async def deletar_jogo(id: int, session: Session = Depends(pegar_sessao), usuari
 async def listar_jogo(session: Session = Depends(pegar_sessao), usuario: Usuario= Depends(verificar_token)):
     jogo = session.query(Jogo).all()
     return jogo
+
+@jogo_router.get("/pesquisar_jogo")
+async def pesquisar_jogos(titulo: str = None, session: Session = Depends(pegar_sessao), usuario: Usuario= Depends(verificar_token)):
+    if titulo:
+        jogo = session.query(Jogo).filter(Jogo.titulo.ilike(f"%{titulo}%")).all()
+    else:
+        jogo = session.query(Jogo).all()
+    if jogo:
+        return jogo
+    return {"mensagem": "Nenhum jogo encontrado"}
+    
