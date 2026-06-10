@@ -12,7 +12,7 @@ async def criar_jogo(jogo_schema: JogoSchema, session: Session = Depends(pegar_s
     if not usuario.admin:
         raise HTTPException(status_code=400, detail="Você não é administrador")
     else:
-        novo_jogo = Jogo(jogo_schema.titulo, jogo_schema.descricao, jogo_schema.data_lancamento, jogo_schema.nota, jogo_schema.url_jogo)
+        novo_jogo = Jogo(jogo_schema.titulo, jogo_schema.descricao, jogo_schema.data_lancamento, jogo_schema.url_jogo, jogo_schema.nota_media)
         session.add(novo_jogo)
         session.commit()
         return{"mensagem": f"jogo adicionado com sucesso {jogo_schema.titulo}"}
