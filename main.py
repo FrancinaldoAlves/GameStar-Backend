@@ -27,6 +27,3 @@ website.include_router(jogo_router)
 website.include_router(noticia_router)
 website.include_router(review_router)
 website.include_router(favorito_router)
-
-
-# uvicorn main:website --reload
