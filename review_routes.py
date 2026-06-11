@@ -8,6 +8,9 @@ review_router = APIRouter(prefix="/review", tags=["review"])
 
 @review_router.post("/criar_review")
 async def criar_review(review_schema: ReviewSchema, session: Session = Depends(pegar_sessao), usuario: Usuario= Depends(verificar_token)):
+    review_repetida = session.query(Review).filter(Review.usuario_id == usuario.id, Review.jogo_id == review_schema.jogo_id).first()
+    if review_repetida:
+        raise HTTPException(status_code=400, detail="Você já avaliou este jogo")
     nova_review= Review(review_schema.usuario_id, review_schema.jogo_id, review_schema.nota, review_schema.data_finalizacao, review_schema.descricao, review_schema.finalizado, review_schema.dropado)
     session.add(nova_review)
     session.commit()
