@@ -48,7 +48,6 @@ class ReviewSchema(BaseModel):
         from_attributes = True
 
 class FavoritoSchema(BaseModel):
-    usuario_id: int
     jogo_id: int
 
     class Config:
