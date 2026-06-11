@@ -32,6 +32,7 @@ Atualmente o projeto utiliza **SQLite** (`banco.db`) por simplicidade.
 - Modo com reload automático
 - Documentação interativa do Swagger disponível em `/docs`
 - Banco de dados local (`banco.db`)
+- **CORS configurado** para permitir requisições do frontend
 
 ## Inicializando a API localmente
 
