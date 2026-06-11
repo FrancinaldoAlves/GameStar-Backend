@@ -84,4 +84,3 @@ class Favorito(Base):
         self.jogo_id = jogo_id
 
 Base.metadata.create_all(db)
-# python models.py executar no terminal para aparecer o arquivo no vs code
